@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -20,37 +21,36 @@ import javax.swing.JTextField;
 import com.daivu.classes.Cliente;
 
 public class TelaCadastro extends JFrame {
-	private static final long serialVersionUID = 1L;
 	// CRIANDO OBJETOS
-	private JLabel jl_Nome = new JLabel("Nome");
-	private JLabel jl_Email = new JLabel("Email");
-	private JLabel jl_Cpf = new JLabel("CPF");
-	private JLabel jl_Telefone = new JLabel("Telefone");
-	private JLabel jl_Titulo = new JLabel("Bem Vindo!");
-	private JLabel jl_Logo = new JLabel();
-	private JLabel jl_SubTitulo = new JLabel("Selecione a opção desejada");
-	private JLabel jl_CriarConta = new JLabel("Cadastrar Cliente");
-	private JLabel jl_Fundo = new JLabel();
-	private JLabel jl_Genero = new JLabel("Escolha seu gênero");
-	private JTextField jtf_Nome = new JTextField();
-	private JTextField jtf_Email = new JTextField();
-	private JTextField jtf_Cpf = new JTextField();
-	private JTextField jtf_Telefone = new JTextField();
+	private final JLabel jl_Nome = new JLabel("Nome");
+	private final JLabel jl_Email = new JLabel("Email");
+	private final JLabel jl_Cpf = new JLabel("CPF");
+	private final JLabel jl_Telefone = new JLabel("Telefone");
+	private final JLabel jl_Titulo = new JLabel("Bem Vindo!");
+	private final JLabel jl_Logo = new JLabel();
+	private final JLabel jl_SubTitulo = new JLabel("Selecione a opção desejada");
+	private final JLabel jl_CriarConta = new JLabel("Cadastrar Cliente");
+	private final JLabel jl_Fundo = new JLabel();
+	private final JLabel jl_Genero = new JLabel("Escolha seu gênero");
+	private final JTextField jtf_Nome = new JTextField();
+	private final JTextField jtf_Email = new JTextField();
+	private final JTextField jtf_Cpf = new JTextField();
+	private final JTextField jtf_Telefone = new JTextField();
 
-	private JButton jbCadastrar = new JButton("Cadastrar");
-	private JButton jbMostrar = new JButton("Mostrar");
-	private JButton jbPesquisar = new JButton("Pesquisar");
-	private JButton jbSair = new JButton();
+	private final JButton jbCadastrar = new JButton("Cadastrar");
+	private final JButton jbMostrar = new JButton("Mostrar");
+	private final JButton jbPesquisar = new JButton("Pesquisar");
+	private final JButton jbSair = new JButton();
 
 	private JRadioButton jrb_f = new JRadioButton("Feminino");
 	private JRadioButton jrb_m = new JRadioButton("Masculino");
 	private JRadioButton jrb_o = new JRadioButton("Outro");
-	private ButtonGroup bg_genero = new ButtonGroup();
+	private final ButtonGroup bg_genero = new ButtonGroup();
 
-	private ImageIcon img_logo = new ImageIcon(getClass().getResource("/com/daivu/imagens/logo.png"));
-	private ImageIcon img_fechar = new ImageIcon(getClass().getResource("/com/daivu/imagens/cruzar.png"));
+	private final ImageIcon img_logo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logo.png")));
+	private final ImageIcon img_fechar = new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/cruzar.png")));
 
-	private Cliente[] clientes = new Cliente[20];
+	private final Cliente[] clientes = new Cliente[20];
 	private int contador = 0;
 
 	// DEFININDO CORES
@@ -289,7 +289,7 @@ public class TelaCadastro extends JFrame {
 					return;
 				}
 				// VALIDAÇÃO
-				JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+				JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 				
 			}
 		});
@@ -302,10 +302,10 @@ public class TelaCadastro extends JFrame {
 				// VERIFICAR SE O CLIENTE ESTÁ CADASTRADO
 				if (clientes[0]!=null) 
 				{
-					JOptionPane.showMessageDialog(null, clientes[contador-1].mostrarDados(), "DAIVU", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+					JOptionPane.showMessageDialog(null, clientes[contador-1].mostrarDados(), "DAIVU", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 					return;
 				}
-				JOptionPane.showMessageDialog(null,"Não há cliente cadastrado!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+				JOptionPane.showMessageDialog(null,"Não há cliente cadastrado!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 			}
 		});
 
@@ -323,27 +323,21 @@ public class TelaCadastro extends JFrame {
 							{
 								if (clientes[i] != null && clientes[i].getNome().equalsIgnoreCase(nomePesquisa))
 								{
-									JOptionPane.showMessageDialog(null, clientes[i].mostrarDados(), "DAIVU", JOptionPane.PLAIN_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+									JOptionPane.showMessageDialog(null, clientes[i].mostrarDados(), "DAIVU", JOptionPane.PLAIN_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 									achado = true;
 								}
 							}
-							if(achado == false) 
+							if(!achado)
 							{
-								JOptionPane.showMessageDialog(null,"Cliente não cadastrado", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+								JOptionPane.showMessageDialog(null,"Cliente não cadastrado", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 							}
 							return;
 						} 
-						JOptionPane.showMessageDialog(null,"Não tem cliente cadastrado!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(getClass().getResource("/com/daivu/imagens/logoJOP.png")));
+						JOptionPane.showMessageDialog(null,"Não tem cliente cadastrado!", "DAIVU", JOptionPane.WARNING_MESSAGE, new ImageIcon(Objects.requireNonNull(getClass().getResource("/com/daivu/imagens/logoJOP.png"))));
 					}
 				});
 
-		jbSair.addActionListener(new ActionListener() //EVENTO BOTAO SAIR
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				System.exit(0);
-			}
-		});
+        //EVENTO BOTAO SAIR
+        jbSair.addActionListener(_ -> System.exit(0));
 	}
 }

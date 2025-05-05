@@ -3,7 +3,7 @@ package com.daivu.classes;
 public class Cliente {
 	
 	// DECLARAR OS ATRIBUTOS
-	private String nome, email, cpf, telefone, genero;
+	private final String nome, email, cpf, telefone, genero;
 
 	// CONSTRUTOR
 	public Cliente(String nome, String email, String cpf, String telefone, String genero) {
